@@ -2,7 +2,7 @@
   "name": "dedupe-elasticsearch",
   "version": "1.0.0",
   "description": "Utility to search and destroy duplicate records",
-  "main": "index.js",
+  "main": "dist/dedupe-elasticsearch.js",
   "scripts": {
     "unit-test": "jest src/** --watch",
     "ci-unit-test": "jest src/**",
