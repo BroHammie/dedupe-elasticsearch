@@ -1,0 +1,47 @@
+{
+  "name": "dedupe-elasticsearch",
+  "version": "1.0.0",
+  "description": "Utility to search and destroy duplicate records",
+  "main": "index.js",
+  "scripts": {
+    "unit-test": "jest src/** --watch",
+    "integration-test": "jest integration_test/** --watch",
+    "lint": "cross-env NODE_ENV=development eslint ./src --ext .js",
+    "lint-watch": "cross-env NODE_ENV=development esw ./src --ext .js -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BroHammie/dedupe-elasticsearch.git"
+  },
+  "keywords": [
+    "elastic",
+    "search",
+    "es",
+    "esclient",
+    "duplicate",
+    "delete"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BroHammie/dedupe-elasticsearch/issues"
+  },
+  "homepage": "https://github.com/BroHammie/dedupe-elasticsearch#readme",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.4.0",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-no-only-tests": "^2.3.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-watch": "^6.0.1",
+    "jest": "24.7.1",
+    "prettier": "^1.18.2",
+    "js-md5": "0.7.3"
+  }
+}
