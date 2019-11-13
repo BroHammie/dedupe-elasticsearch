@@ -8,7 +8,8 @@
     "ci-unit-test": "jest src/**",
     "integration-test": "jest integration_test/** --watch",
     "lint": "cross-env NODE_ENV=development eslint ./src/*.js",
-    "lint-watch": "cross-env NODE_ENV=development esw ./src/*.js -w"
+    "lint-watch": "cross-env NODE_ENV=development esw ./src/*.js -w",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,8 @@
     "eslint-watch": "^6.0.1",
     "jest": "24.7.1",
     "prettier": "^1.18.2",
-    "js-md5": "0.7.3"
+    "js-md5": "0.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }

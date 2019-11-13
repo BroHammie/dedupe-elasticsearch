@@ -1,5 +1,6 @@
 const { scrollAllDocs } = require('./ScrollAllDocs');
 
+// Returns the duplicates
 const getAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
   const allDocs = await scrollAllDocs(esClient, index, keysToIncludeInHash);
 
@@ -17,6 +18,7 @@ const getAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
     );
 };
 
+// Returns bulk delete promise
 const deleteAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
   const duplicates = await getAllDuplicates(esClient, index, keysToIncludeInHash);
 
