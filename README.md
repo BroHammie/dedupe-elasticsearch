@@ -4,7 +4,7 @@ JS version of https://github.com/alexander-marquardt/deduplicate-elasticsearch
 
 Use <b>WITH EXTREME CAUTION </b>like:
 ```
-const { getAllDuplicates, deleteAllDuplicates } = require('./dedupe-elasticsearch');
+const { getAllDuplicates, deleteAllDuplicates } = require('dedupe-elasticsearch');
 
 const localClient = new Client({ node: 'http://localhost:9200' });
 const indexName = 'node-test5';
