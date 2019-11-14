@@ -26,15 +26,18 @@ const deleteAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
   const deleteString = Object.values(duplicates)
     .map(arrayOfIds => arrayOfIds.slice(1))
     .flat()
-    .reduce((deleteAccum, nextId) => deleteAccum + `{ "delete": { "_index": "${index}", "_id": "${nextId}" } },
-    `, "");
+    .reduce(
+      (deleteAccum, nextId) =>
+        `${deleteAccum} { "delete": { "_index": "${index}", "_id": "${nextId}" } },`,
+      '',
+    );
 
   return esClient.bulk({
     // here we are forcing an index refresh,
     // otherwise we will not get any result
     // in the consequent search
     refresh: true,
-    body: deleteString + "\n",
+    body: `${deleteString} \n`,
   });
 };
 

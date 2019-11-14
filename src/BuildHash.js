@@ -9,7 +9,7 @@ const getHash = (keyNames = [], hit) => {
         return getDescendantProp(hit._source, key);
       })
       .toString()
-      .replace(/,/g, '')
+      .replace(/,/g, ''),
   );
 };
 
