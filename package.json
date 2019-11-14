@@ -1,15 +1,14 @@
 {
   "name": "dedupe-elasticsearch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility to search and destroy duplicate records",
-  "main": "dist/dedupe-elasticsearch.js",
+  "main": "src/index.js",
   "scripts": {
     "unit-test": "jest src/** --watch",
     "ci-unit-test": "jest src/**",
     "integration-test": "jest integration_test/** --watch",
     "lint": "cross-env NODE_ENV=development eslint ./src/*.js",
-    "lint-watch": "cross-env NODE_ENV=development esw ./src/*.js -w",
-    "build": "webpack"
+    "lint-watch": "cross-env NODE_ENV=development esw ./src/*.js -w"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,9 @@
     "es",
     "esclient",
     "duplicate",
-    "delete"
+    "delete",
+    "kibana",
+    "ELK"
   ],
   "author": "",
   "license": "ISC",
@@ -44,8 +45,6 @@
     "eslint-watch": "^6.0.1",
     "jest": "24.7.1",
     "prettier": "^1.18.2",
-    "js-md5": "0.7.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "js-md5": "0.7.3"
   }
 }

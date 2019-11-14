@@ -1,7 +1,7 @@
 const { seed } = require("./seed");
 const { deleteIndex } = require("./delete");
 const { Client } = require("@elastic/elasticsearch");
-const { deleteAllDuplicates, getAllDuplicates } = require("../dist/dedupe-elasticsearch");
+const { deleteAllDuplicates, getAllDuplicates } = require("../src/index");
 
 const client = new Client({ node: "http://localhost:9200" });
 const index = "game-of-thrones-test-delete-duplicates";
@@ -28,16 +28,12 @@ it("delete double seed", async () => {
     "character",
     "quote"
   ]);
-
   expect(deleteResponse.statusCode).toStrictEqual(200);
   expect(deleteResponse.body.errors).toStrictEqual(false);
 
-  //Timeout its not refreshing instantly
-  setTimeout(async () => {
-    const duplicates = await getAllDuplicates(client, index, [
-      "character",
-      "quote"
-    ]);
-    expect(duplicates).toStrictEqual({});
-  }, 1000);
+  const postDuplicates = await getAllDuplicates(client, index, [
+    "character",
+    "quote"
+  ]);
+  expect(postDuplicates).toStrictEqual({});
 });

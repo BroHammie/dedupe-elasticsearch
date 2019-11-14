@@ -1,7 +1,7 @@
 const { seed } = require("./seed");
 const { deleteIndex } = require("./delete");
 const { Client } = require("@elastic/elasticsearch");
-const { getAllDuplicates } = require("../dist/dedupe-elasticsearch");
+const { getAllDuplicates } = require("../src/index");
 
 const client = new Client({ node: "http://localhost:9200" });
 const index = "game-of-thrones-test-duplicates";
