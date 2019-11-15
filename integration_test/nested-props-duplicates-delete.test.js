@@ -1,7 +1,7 @@
 const { seedNested } = require('./seed');
 const { deleteIndex } = require('./delete');
 const { Client } = require('@elastic/elasticsearch');
-const { getAllDuplicates, deleteAllDuplicates } = require('../src/index');
+const { getAllDuplicates, findDeleteDuplicates } = require('../src/index');
 
 const client = new Client({ node: 'http://localhost:9200' });
 const keysToIncludeInHash = ['character.firstName', 'quote'];
@@ -22,7 +22,7 @@ it('double seed', async () => {
     expect(value.length).toStrictEqual(2);
   });
 
-  const deleteResponse = await deleteAllDuplicates(client, doubleIndex, keysToIncludeInHash);
+  const deleteResponse = await findDeleteDuplicates(client, doubleIndex, keysToIncludeInHash);
   expect(deleteResponse.statusCode).toStrictEqual(200);
   expect(deleteResponse.body.errors).toStrictEqual(false);
 

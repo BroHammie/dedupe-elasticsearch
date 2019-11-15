@@ -1,7 +1,7 @@
 const { seed } = require("./seed");
 const { deleteIndex } = require("./delete");
 const { Client } = require("@elastic/elasticsearch");
-const { deleteAllDuplicates, getAllDuplicates } = require("../src/index");
+const { findDeleteDuplicates, getAllDuplicates } = require("../src/index");
 
 const client = new Client({ node: "http://localhost:9200" });
 const index = "game-of-thrones-test-delete-duplicates";
@@ -24,7 +24,7 @@ it("delete double seed", async () => {
     expect(value.length).toStrictEqual(2);
   });
 
-  const deleteResponse = await deleteAllDuplicates(client, index, [
+  const deleteResponse = await findDeleteDuplicates(client, index, [
     "character",
     "quote"
   ]);

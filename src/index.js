@@ -1,6 +1,6 @@
 const { scrollAllDocs } = require('./ScrollAllDocs');
 
-// Returns the duplicates
+// Returns the duplicates {hashKey: [esId1, esId2, esId3], hashKey2: [esId4, esId5]}
 const getAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
   const allDocs = await scrollAllDocs(esClient, index, keysToIncludeInHash);
 
@@ -19,9 +19,7 @@ const getAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
 };
 
 // Returns bulk delete promise
-const deleteAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
-  const duplicates = await getAllDuplicates(esClient, index, keysToIncludeInHash);
-
+const deleteAllDuplicates = async (esClient, index, duplicates) => {
   // duplicates is array of array
   const deleteString = Object.values(duplicates)
     .map(arrayOfIds => arrayOfIds.slice(1))
@@ -41,7 +39,14 @@ const deleteAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
   });
 };
 
+// Returns bulk delete promise
+const findDeleteDuplicates = async (esClient, index, keysToIncludeInHash) => {
+  const duplicates = await getAllDuplicates(esClient, index, keysToIncludeInHash);
+  return deleteAllDuplicates(esClient, index, duplicates);
+};
+
 module.exports = {
   getAllDuplicates,
   deleteAllDuplicates,
+  findDeleteDuplicates,
 };
