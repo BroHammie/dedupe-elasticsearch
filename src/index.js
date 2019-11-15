@@ -28,7 +28,7 @@ const deleteAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
     .flat()
     .reduce(
       (deleteAccum, nextId) =>
-        `${deleteAccum} { "delete": { "_index": "${index}", "_id": "${nextId}" } },`,
+        `${deleteAccum} { "delete": { "_index": "${index}", "_id": "${nextId}" } },\n`,
       '',
     );
 
@@ -37,7 +37,7 @@ const deleteAllDuplicates = async (esClient, index, keysToIncludeInHash) => {
     // otherwise we will not get any result
     // in the consequent search
     refresh: true,
-    body: `${deleteString} \n`,
+    body: `${deleteString}`,
   });
 };
 

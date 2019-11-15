@@ -13,7 +13,7 @@ afterAll(() => {
   ]);
 });
 
-it('double seed', async () => {
+it('triple seed', async () => {
   await seedNested(client, tripleIndex);
   await seedNested(client, tripleIndex);
   await seedNested(client, tripleIndex);
