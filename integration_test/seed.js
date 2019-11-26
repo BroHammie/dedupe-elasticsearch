@@ -9,20 +9,20 @@ const seed = (client, index) => {
       { index: { _index: index } },
       // the document to index
       {
-        character: "Ned Stark",
-        quote: "Winter is coming."
+        character: 'Ned Stark',
+        quote: 'Winter is coming.',
       },
 
       { index: { _index: index } },
       {
-        character: "Daenerys Targaryen",
-        quote: "I am the blood of the dragon."
+        character: 'Daenerys Targaryen',
+        quote: 'I am the blood of the dragon.',
       },
 
       { index: { _index: index } },
       {
         character: 'Tyrion Lannister',
-        quote: 'A mind needs books like a sword needs a whetstone.'
+        quote: 'A mind needs books like a sword needs a whetstone.',
       },
     ],
   });
@@ -39,27 +39,35 @@ const seedNested = (client, index) => {
       { index: { _index: index } },
       // the document to index
       {
-        "character": {
-          "firstName": 'Ned',
-          "lastName": 'Stark'
+        character: {
+          firstName: 'Ned',
+          lastName: 'Stark',
         },
-        quote: 'Winter is coming.'
+        quote: 'Winter is coming.',
       },
       { index: { _index: index } },
       {
-        "character": {
-          "firstName": 'Daenerys',
-          "lastName": 'Targaryen'
+        character: {
+          firstName: 'Daenerys',
+          lastName: 'Targaryen',
         },
-        quote: 'I am the blood of the dragon.'
+        quote: 'I am the blood of the dragon.',
       },
       { index: { _index: index } },
       {
-        "character": {
-          "firstName": 'Tyrion',
-          "lastName": 'Lannister'
+        character: {
+          firstName: 'Tyrion',
+          lastName: 'Lannister',
         },
-        quote: 'A mind needs books like a sword needs a whetstone.'
+        quote: 'A mind needs books like a sword needs a whetstone.',
+      },
+      { index: { _index: index } },
+      {
+        character: {
+          firstName: 'Jaime',
+          lastName: 'Lannister',
+        },
+        quote: 'A Lannister always pays their debts',
       },
     ],
   });

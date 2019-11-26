@@ -1,9 +1,9 @@
 const deleteIndex = (client, index) => {
   return client.indices.delete({
-    index
+    index,
   });
 };
 
 module.exports = {
-  deleteIndex
+  deleteIndex,
 };

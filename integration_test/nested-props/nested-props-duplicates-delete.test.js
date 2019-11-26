@@ -1,16 +1,14 @@
-const { seedNested } = require('./seed');
-const { deleteIndex } = require('./delete');
+const { seedNested } = require('../seed');
+const { deleteIndex } = require('../delete');
 const { Client } = require('@elastic/elasticsearch');
-const { getAllDuplicates, findDeleteDuplicates } = require('../src/index');
+const { getAllDuplicates, findDeleteDuplicates } = require('../../src/index');
 
 const client = new Client({ node: 'http://localhost:9200' });
 const keysToIncludeInHash = ['character.firstName', 'quote'];
 const doubleIndex = 'game-of-thrones-test-nested-props-double';
 
 afterAll(() => {
-  return Promise.all([
-    deleteIndex(client, doubleIndex),
-  ]);
+  return Promise.all([deleteIndex(client, doubleIndex)]);
 });
 
 it('double seed', async () => {

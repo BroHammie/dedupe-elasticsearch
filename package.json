@@ -7,8 +7,8 @@
     "unit-test": "jest src/** --watch",
     "ci-unit-test": "jest src/**",
     "integration-test": "jest integration_test/** --watch",
-    "lint": "cross-env NODE_ENV=development eslint ./src/*.js",
-    "lint-watch": "cross-env NODE_ENV=development esw ./src/*.js -w"
+    "lint": "cross-env NODE_ENV=development eslint ./src/*.js ./integration_test/*.js",
+    "lint-watch": "cross-env NODE_ENV=development esw ./src/*.js ./integration_test/*.js -w"
   },
   "repository": {
     "type": "git",
