@@ -2,16 +2,18 @@ const { populateMap } = require('./GetMapOfDocs');
 
 // Loop over all documents in the index, and populate the
 // map data structure.
-const scrollAllDocs = async (esClient, index, keysToIncludeInHash = []) => {
-  const data = await esClient.search({
+const scrollAllDocs = async (esClient, index, keysToIncludeInHash = [], queryJson) => {
+  const search = {
     index,
     scroll: '1m',
-    body: {
-      query: {
-        match_all: {},
-      },
-    },
-  });
+    size: 200,
+  };
+  if (Object.keys(queryJson).length > 0) {
+    search.body = queryJson;
+  } else {
+    search.body = {};
+  }
+  const data = await esClient.search(search);
   const sid = data.body._scroll_id;
   let allDocsMap = {};
   if (data.body.hits) {
